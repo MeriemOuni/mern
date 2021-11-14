@@ -29,17 +29,7 @@ router.get('/test', (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const { name, email, phone } = req.body
-        // hnadling errors : name and email required
-        if (!name || !email){
-            res.status(400).send({msg: 'Name & email are required !!!', error})
-            return
-        }
-        // handling errors : email is unique
-        const contact = await Contact.find({email})
-        if (contact){
-            res.status(400).send({msg: 'Contact already exist !!!', error})
-            return
-        }
+        
         const newContact = new Contact({
             name,
             email,
