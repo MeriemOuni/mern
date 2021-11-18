@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import {useDispatch } from 'react-redux'
 import { postContact}  from '../JS/actions/contact'
 import { Link } from 'react-router-dom';
+import {Form, Button} from 'react-bootstrap'
+
 
 const Add = () => {
     const [newContact, setNewContact] = useState({name:"", email:"", phone:""})
@@ -16,28 +18,26 @@ const Add = () => {
         
     return (
         <div>
-            <label>Name</label>
-            <input 
-            name="name"
-            value={newContact.name}
-            onChange={handleChange}
-            />
-
-            <label>Email</label>
-            <input 
-            value={newContact.email}
-            onChange={handleChange}
-            name="email"
-            />
-
-            <label>Phone</label>
-            <input 
-            value={newContact.phone}
-            onChange={handleChange}
-            name="phone"
-            />
-            <Link to="/"><button onClick={() => add()} >Add</button></Link>
-            
+            <h2> Add contact</h2>
+            <div style={{width:'70%', marginLeft:'15%'}}>
+                <Form>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control placeholder="Enter name" name='name' value={newContact.name} onChange={handleChange}/>
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" name="email" value={newContact.email} onChange={handleChange} />
+                        <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
+                        </Form.Text>
+                        
+                    </Form.Group>
+                    <Form.Label>Phone</Form.Label>
+                        <Form.Control placeholder="Phone number" name="phone" value={newContact.phone} onChange={handleChange} />
+                    <Link to='/'><Button variant="primary" type="submit" onClick={() => add()}>
+                        Submit
+                    </Button></Link>
+                </Form>
+            </div>
         </div>
     )
 }

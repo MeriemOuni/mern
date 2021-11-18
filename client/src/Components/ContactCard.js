@@ -1,28 +1,21 @@
 import React from 'react'
-import {deleteContact, getOneContact} from "../JS/actions/contact"
+import {deleteContact} from "../JS/actions/contact"
 import {useDispatch} from 'react-redux'
-import { Link } from 'react-router-dom'
 import { Button, Card } from 'react-bootstrap'
 import '../App.css'
 
 
 const ContactCard = ({contact}) => {
     const dispatch = useDispatch()
-    const handleEdit = () => {
-
-        dispatch(getOneContact(contact._id))
-    }
 
     return (
-        <div className="container" style={{width:"40%", margin:"5%", border:'black 1px'}}>
-            <Card>
-            <h2>{contact.name}</h2>
-            <h2>{contact.email}</h2>
-            <h2>{contact.phone}</h2>
-            <div style={{display:"flex", justifyContent:"space-around"}}>
-            <Link to="/edit"><Button onClick={handleEdit} contact={contact}>Edit</Button></Link>
-            <Button onClick={() => dispatch(deleteContact(contact._id))}>Delete</Button>
-            </div>
+        <div className="container" style={{width:"20%", margin:"5%", border:'black 1px'}}>
+            <Card border="info" style={{ width: '18rem' }}>
+                <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbUqkRN4QaEzCW4brgWElc7lv8HdwP8RyxJ89WdDWAoIO-rEUIACXkEXG4n2mDGMLuz4Q&usqp=CAU" alt ="avatar"/>
+                <Card.Title>{contact.name}</Card.Title>
+                <Card.Text>{contact.email}</Card.Text>
+                <Card.Text>{contact.phone}</Card.Text>
+                <Button onClick={() => dispatch(deleteContact(contact._id))}>Delete</Button>
             </Card>
         </div>
     )

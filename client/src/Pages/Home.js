@@ -1,12 +1,10 @@
 import React from 'react'
 import ContactList from '../Components/ContactList'
-import { Link } from 'react-router-dom'
-import { Button } from 'react-bootstrap'
 
 const Home = () => {
     return (
         <div>
-            <Link to="/add"><Button >Add Contact</Button></Link>
+            <h1 style={{marginTop:'20px'}}>This is the home page</h1>
             <ContactList />
         </div>
     )

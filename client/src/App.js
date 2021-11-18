@@ -4,23 +4,17 @@ import { Route, Switch } from 'react-router';
 import Add from './Pages/Add';
 import Errors from './Pages/Errors';
 import Home from './Pages/Home';
-
 import './App.css';
-import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
-import Edit from './Pages/Edit';
-import {Button} from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import BootNav from './Components/BootNav'
 
 function App() {
   return (
     <div className="App">
-        <Navbar />
-        <Link to="/"><Button style={{marginBottom:'20px'}}>Contact List</Button></Link>
+        <BootNav />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/add" component={Add} />
-          <Route path="/edit" component={Edit} />
           <Route path="/*" component={Errors} />
         </Switch>
         <Footer />

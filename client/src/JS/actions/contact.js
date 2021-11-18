@@ -37,14 +37,6 @@ export const deleteContact = (id) => async (dispatch) => {
     }
 }
 
-export const editContact = (id, newContact) => async (dispatch) => {
-    try {
-        await axios.put(`/api/contacts/${id}`, newContact)
-        dispatch(getContacts())
-    } catch (error) {
-        dispatch({ type: FAIL_CONTACTS, payload: error.response})
-    }
-} 
 
 export const getOneContact = (id) => async (dispatch) => {
     try {

@@ -2,6 +2,7 @@ import React,{ useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getContacts} from '../JS/actions/contact'
 import ContactCard from './ContactCard'
+import {Spinner} from 'react-bootstrap'
 
 const ContactList = () => {
     const dispatch = useDispatch()
@@ -13,7 +14,7 @@ const ContactList = () => {
 
     return (
         <div style={{display: 'flex', justifyContent:'space-around', flexWrap:'wrap'}}>
-            {load ? (<h2>Spinner</h2> ): 
+            {load ? (<Spinner animation="border" variant="primary" /> ): 
             ( listContacts.map((el) => <ContactCard contact={el} key={el._id}/>))
         }</div>
     )
